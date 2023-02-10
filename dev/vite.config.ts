@@ -11,14 +11,14 @@ export default defineConfig({
           return code
         }
         return code
-          .replace(/process\.env\.SSR/g, 'false')
-          .replace(/process\.env\.DEV/g, 'true')
-          .replace(/process\.env\.PROD/g, 'false')
-          .replace(/process\.env\.NODE_ENV/g, '"development"')
-          .replace(/import\.meta\.env\.SSR/g, 'false')
-          .replace(/import\.meta\.env\.DEV/g, 'true')
-          .replace(/import\.meta\.env\.PROD/g, 'false')
-          .replace(/import\.meta\.env\.NODE_ENV/g, '"development"')
+          .replaceAll('process.env.SSR', 'false')
+          .replaceAll('process.env.DEV', 'true')
+          .replaceAll('process.env.PROD', 'false')
+          .replaceAll('process.env.NODE_ENV', '"development"')
+          .replaceAll('import.meta.env.SSR', 'false')
+          .replaceAll('import.meta.env.DEV', 'true')
+          .replaceAll('import.meta.env.PROD', 'false')
+          .replaceAll('import.meta.env.NODE_ENV', '"development"')
       },
     },
   ],

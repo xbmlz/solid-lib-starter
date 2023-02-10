@@ -1,47 +1,51 @@
 {
-  "version": "0.0.0",
   "name": "{{name_of_lib}}",
+  "type": "module",
+  "version": "0.0.0",
+  "private": false,
+  "packageManager": "pnpm@7.22.0",
   "description": "{{desc_of_lib}}",
-  "license": "MIT",
   "author": "{{me}}",
+  "license": "MIT",
   "contributors": [],
+  "homepage": "https://github.com/{{me}}/{{name_of_lib}}#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/{{me}}/{{name_of_lib}}.git"
   },
-  "homepage": "https://github.com/{{me}}/{{name_of_lib}}#readme",
   "bugs": {
     "url": "https://github.com/{{me}}/{{name_of_lib}}/issues"
   },
-  "files": [
-    "dist"
+  "keywords": [
+    "solid"
   ],
-  "private": false,
   "sideEffects": false,
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "browser": {},
   "exports": {
     "solid": {
       "development": "./dist/dev.jsx",
       "import": "./dist/index.jsx"
     },
     "development": {
+      "require": "./dist/dev.cjs",
       "import": {
         "types": "./dist/index.d.ts",
         "default": "./dist/dev.js"
-      },
-      "require": "./dist/dev.cjs"
+      }
     },
+    "require": "./dist/index.cjs",
     "import": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    },
-    "require": "./dist/index.cjs"
+    }
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "typesVersions": {},
+  "files": [
+    "dist"
+  ],
+  "browser": {},
   "scripts": {
     "dev": "vite serve dev",
     "build": "tsup",
@@ -51,15 +55,20 @@
     "prepublishOnly": "pnpm build",
     "format": "prettier --ignore-path .gitignore -w \"src/**/*.{js,ts,json,css,tsx,jsx}\" \"dev/**/*.{js,ts,json,css,tsx,jsx}\"",
     "update-deps": "pnpm up -Li",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix . "
   },
   "peerDependencies": {
     "solid-js": "^1.6.0"
   },
   "devDependencies": {
+    "@xbmlz/eslint-config-prettier": "^0.1.16",
+    "@xbmlz/eslint-config-solid": "^0.1.16",
     "concurrently": "^7.6.0",
     "esbuild": "^0.17.4",
     "esbuild-plugin-solid": "^0.5.0",
+    "eslint": "^8.29.0",
     "jsdom": "^21.1.0",
     "prettier": "2.8.3",
     "solid-js": "^1.6.9",
@@ -69,9 +78,5 @@
     "vite": "^4.0.4",
     "vite-plugin-solid": "^2.5.0",
     "vitest": "^0.28.2"
-  },
-  "keywords": [
-    "solid"
-  ],
-  "packageManager": "pnpm@7.22.0"
+  }
 }
